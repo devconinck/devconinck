@@ -1,12 +1,19 @@
+"use client";
 import Image from "next/image";
 import Header from "./components/Header";
+import Info from "./components/Info";
+import About from "./components/About";
+import Skills from "./components/Skills";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen">
-      <div>
-        <Header />
-      </div>
-    </main>
+    <div className="border border-slate-300 rounded-2xl p-4 m-4 ">
+      <section id="about" className="">
+        <About />
+      </section>
+      <section id="skills" className=" ">
+        <Skills />
+      </section>
+    </div>
   );
 }

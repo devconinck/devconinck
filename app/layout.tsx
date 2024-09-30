@@ -3,6 +3,9 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import Head from "next/head";
+import { ThemeProvider } from "./components/theme-provider";
+import Info from "./components/Info";
+import Header from "./components/Header";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -27,7 +30,20 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="flex flex-col md:flex-row">
+            <Info />
+            <div className="flex flex-col w-full">
+              <Header />
+              {children}
+            </div>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
