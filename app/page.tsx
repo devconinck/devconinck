@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import Header from "./components/Header";
+import Header from "./components/NavBar";
 import Info from "./components/Info";
 import About from "./components/About";
 import Skills from "./components/Skills";
