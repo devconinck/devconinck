@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
 import Header from "./components/NavBar";
-import Info from "./components/Info";
 import About from "./components/About";
 import Skills from "./components/Skills";
+import SkillsShowcase from "./components/SkillsDiv";
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
         <About />
       </section>
       <section id="skills" className=" ">
-        <Skills />
+        <SkillsShowcase />
       </section>
     </div>
   );
