@@ -1,43 +1,114 @@
-import React from "react";
-import { Github } from "lucide-react";
+import { useState } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight, ExternalLink, Github } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
-interface ProjectProps {
-  project: {
-    id: number;
-
-    title: string;
-
-    description: string;
-
-    skills: string[];
-  };
+interface Skill {
+  name: string;
+  color: "default" | "secondary" | "destructive" | "outline";
 }
 
-export default function Project({ project }: ProjectProps) {
+interface Project {
+  title: string;
+  description: string;
+  images: string[];
+  videoUrl: string;
+  skills: Skill[];
+  startDate: string;
+  endDate: string;
+}
+
+interface ProjectsGridProps {
+  projects: Project[];
+}
+
+function ProjectCard({ project }: { project: Project }) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = () => {
+    setCurrentImageIndex(
+      (prevIndex) => (prevIndex + 1) % project.images.length
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex(
+      (prevIndex) =>
+        (prevIndex - 1 + project.images.length) % project.images.length
+    );
+  };
+
   return (
-    <div className="border border-slate-300 rounded-lg p-4 m-4 shadow-md">
-      <h3 className="text-xl font-semibold">{project.title}</h3>
-      <p className="">{project.description}</p>
-      <ul className="list-disc list-inside mt-2">
-        {project.skills.map((skill) => (
-          <li key={skill} className="">
-            {skill}
-          </li>
+    <Card className="h-full flex flex-col">
+      <CardHeader>
+        <CardTitle className="text-xl font-bold">{project.title}</CardTitle>
+        <CardDescription className="line-clamp-2">
+          {project.description}
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="flex-grow space-y-4">
+        <div className="relative aspect-video">
+          <div className="absolute inset-0">
+            <Image
+              src={project.images[currentImageIndex]}
+              alt={`Project image ${currentImageIndex + 1}`}
+              layout="fill"
+              objectFit="cover"
+              className="rounded-md"
+            />
+          </div>
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute left-2 top-1/2 transform -translate-y-1/2"
+            onClick={prevImage}
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </Button>
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2"
+            onClick={nextImage}
+          >
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {project.skills.map((skill, index) => (
+            <Badge key={index} variant={skill.color}>
+              {skill.name}
+            </Badge>
+          ))}
+        </div>
+        <div className="flex justify-between items-center text-sm text-gray-500">
+          <span>Started: {project.startDate}</span>
+          <span>Completed: {project.endDate}</span>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+export default function ProjectsGrid({ projects }: ProjectsGridProps) {
+  return (
+    <section className="py-12">
+      <h2 className="text-3xl font-bold text-center mb-8">My Projects</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((project, index) => (
+          <ProjectCard key={index} project={project} />
         ))}
-      </ul>
-      <div className="mt-4 flex items-center">
-        <a href={`/projects/${project.title}`} className=" hover:underline">
-          View Project
-        </a>
-        <a
-          href={`https://github.com/yourusername/${project.title}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="ml-2"
-        >
-          <Github className="w-6 h-6 " />
-        </a>
       </div>
-    </div>
+    </section>
   );
 }

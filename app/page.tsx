@@ -1,19 +1,24 @@
 "use client";
-import Image from "next/image";
-import Header from "./components/NavBar";
 import About from "./components/About";
-import Skills from "./components/Skills";
 import SkillsShowcase from "./components/SkillsDiv";
+import Projects from "./components/Projects";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <div className="border border-slate-300 rounded-2xl p-4 m-4 ">
-      <section id="about" className="">
+    <div className="">
+      <div id="about" className="flex items-center justify-center w-screen">
         <About />
-      </section>
-      <section id="skills" className=" ">
+      </div>
+      <div id="skills" className="flex items-center justify-center w-screen ">
         <SkillsShowcase />
-      </section>
+      </div>
+      <div id="projects" className="flex items-center justify-center w-screen ">
+        <Projects />
+      </div>
+      <div className="flex items-center justify-center w-screen ">
+        <Footer />
+      </div>
     </div>
   );
 }

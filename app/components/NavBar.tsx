@@ -6,6 +6,7 @@ import { Menu, X, Github, Linkedin, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import ModeToggle from "./Mode-toggle";
+import MobileHamburgerMenu from "./Hamburger";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -18,7 +19,7 @@ export default function Navbar() {
 
   return (
     <div className="w-screen">
-      <main className="px-2 pt-2 pb-1 m-auto sm:pb-2 max-w-13xl">
+      <main className="px-2 pt-2 pb-1 m-auto sm:pb-2 max-w-13xl border-b border-slate-300">
         <nav className="flex items-center justify-between mx-1 sm:mx-2 md:mx-3 lg:mx-4">
           <Logo />
 
@@ -118,35 +119,7 @@ export default function Navbar() {
           </div>
 
           <div className="md:hidden">
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="hover:bg-primary/10 rounded-full transition-colors"
-                >
-                  <Menu className="h-6 w-6" />
-                  <span className="sr-only">Open menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent
-                side="right"
-                className="w-[300px] sm:w-[400px] border-l-4 border-primary"
-              >
-                <nav className="flex flex-col gap-4 mt-8">
-                  {navItems.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="text-lg font-medium hover:text-primary transition-colors p-2 rounded-md hover:bg-primary/10"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </nav>
-              </SheetContent>
-            </Sheet>
+            <MobileHamburgerMenu />
           </div>
         </nav>
       </main>
