@@ -36,7 +36,7 @@ export default function AboutPage() {
             </div>
             <div className="p-8">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-                John Doe
+                Quinten Deconinck
               </h2>
               <p className="mt-2 text-gray-600 dark:text-gray-300">
                 Computer Science Student | Sports enthusiast | Football lover
