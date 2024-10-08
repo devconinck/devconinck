@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import Image from "next/image";
@@ -41,8 +42,8 @@ export default function AboutPage() {
                 Computer Science Student | Sports enthusiast | Football lover
               </p>
               <p className="mt-4 text-gray-600 dark:text-gray-300">
-                I`&apos`m a passionate developer currently in the last year of
-                my Bachelors degree in Applied Information Technology.
+                I'm a passionate developer currently in the last year of my
+                Bachelors degree in Applied Information Technology.
               </p>
             </div>
           </div>
@@ -92,7 +93,7 @@ export default function AboutPage() {
             Interests & Hobbies
           </h2>
           <p className="text-gray-600 dark:text-gray-300">
-            When I`&apos`m not coding, you can find me:
+            When I'm not coding, you can find me:
           </p>
           <ul className="list-disc list-inside mt-2 text-gray-600 dark:text-gray-300">
             <li>Playing football</li>
@@ -110,12 +111,12 @@ export default function AboutPage() {
           className="bg-white dark:bg-gray-800 shadow-xl rounded-lg overflow-hidden p-8"
         >
           <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-            Let`&apos`s Connect
+            Let's Connect
           </h2>
           <p className="text-gray-600 dark:text-gray-300 mb-4">
-            I`&apos`m always excited to collaborate on interesting projects or
-            just chat about tech. Feel free to reach out to me through any of
-            the following channels:
+            I'm always excited to collaborate on interesting projects or just
+            chat about tech. Feel free to reach out to me through any of the
+            following channels:
           </p>
           <div className="flex space-x-4">
             <Link

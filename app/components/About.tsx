@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import Image from "next/image";
@@ -36,7 +37,7 @@ export default function LandingPage() {
             className="p-8"
           >
             <div className=" tracking-wide text-4xl text-cyan-700 font-extrabold">
-              Hi, I`&apos`m
+              Hi, I'm
             </div>
             <h1 className="mt-2 text-4xl leading-8 font-extrabold tracking-tight sm:text-4xl">
               Quinten Deconinck
