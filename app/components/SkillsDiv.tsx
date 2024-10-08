@@ -21,6 +21,7 @@ const skillsSvgs = [
   { name: "Tailwind", svg: "/skills/tailwind.svg" },
 ];
 
+//@ts-ignore
 const SkillIcon = ({ skill, x, y, isGrid }) => (
   <motion.div
     className={`${
@@ -63,7 +64,7 @@ export default function SkillsShowcase() {
   useEffect(() => {
     if (isSmallScreen) return;
 
-    let animationFrame;
+    let animationFrame: number;
     const animate = () => {
       setRotation((prev) => (prev + 0.2) % 360);
       animationFrame = requestAnimationFrame(animate);
@@ -86,7 +87,13 @@ export default function SkillsShowcase() {
       {isSmallScreen ? (
         <div className="grid grid-cols-4 gap-8 mt-8">
           {skillsSvgs.map((skill) => (
-            <SkillIcon key={skill.name} skill={skill} isGrid={true} />
+            <SkillIcon
+              key={skill.name}
+              skill={skill}
+              isGrid={true}
+              x={undefined}
+              y={undefined}
+            />
           ))}
         </div>
       ) : (

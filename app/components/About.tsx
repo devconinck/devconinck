@@ -36,7 +36,7 @@ export default function LandingPage() {
             className="p-8"
           >
             <div className=" tracking-wide text-4xl text-cyan-700 font-extrabold">
-              Hi, I'm
+              Hi, I`&apos`m
             </div>
             <h1 className="mt-2 text-4xl leading-8 font-extrabold tracking-tight sm:text-4xl">
               Quinten Deconinck
