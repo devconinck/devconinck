@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Menu } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
@@ -11,6 +11,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import Link from "next/link";
 
 const menuItems = [
   { name: "Home", href: "/" },
@@ -45,12 +46,14 @@ export default function MobileHamburgerMenu() {
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                   >
-                    <Button
-                      variant="ghost"
-                      className="w-full justify-start border-slate-400 border-b border-l "
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.name}
+                    <Button asChild>
+                      <Link
+                        href={item.href}
+                        className=" w-full justify-start border-slate-400 border-b border-l "
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
                     </Button>
                   </motion.li>
                 ))}

@@ -35,9 +35,9 @@ export default function ModeToggle() {
       >
         <motion.div whileTap={{ rotate: 360 }}>
           {isOn ? (
-            <Sun className="h-4 w-4 text-yellow-300" />
-          ) : (
             <Moon className="h-4 w-4 text-slate-200" />
+          ) : (
+            <Sun className="h-4 w-4 text-yellow-300" />
           )}
         </motion.div>
       </motion.div>

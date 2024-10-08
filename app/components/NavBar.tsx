@@ -60,7 +60,7 @@ export default function Navbar() {
                 Projects
               </Link>
               <Link
-                href="/"
+                href="/about"
                 className="flex items-center gap-1 transition-all hover:text-primary hover:bg-primary/10"
               >
                 <svg
@@ -89,14 +89,14 @@ export default function Navbar() {
                 className="rounded-full hover:bg-primary/10 transition-colors"
                 asChild
               >
-                <a
-                  href="https://github.com/yourusername"
+                <Link
+                  href="https://www.github.com/devconinck"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <Github className="h-5 w-5" />
                   <span className="sr-only">GitHub</span>
-                </a>
+                </Link>
               </Button>
 
               <Button
@@ -105,14 +105,14 @@ export default function Navbar() {
                 className="rounded-full hover:bg-primary/10 transition-colors"
                 asChild
               >
-                <a
-                  href="https://linkedin.com/in/yourusername"
+                <Link
+                  href="https://www.linkedin.com/in/quinten-deconinck-01b375177"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <Linkedin className="h-5 w-5" />
                   <span className="sr-only">LinkedIn</span>
-                </a>
+                </Link>
               </Button>
             </div>
             <ModeToggle />

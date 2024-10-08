@@ -1,48 +1,107 @@
-import ProjectsGrid from "./Project";
+import React from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button";
 
-const projectsData = [
+interface Project {
+  name: string;
+  year: number;
+  description: string;
+  technologies: string[];
+  image?: string;
+}
+
+const projects: Project[] = [
   {
-    title: "Project 1",
+    name: "Delaware B2B portal (Webshop)",
+    year: 2024,
     description:
-      "This is a description for Project 1. It showcases various technologies and solving complex problems.",
-    images: [
-      "/placeholder.svg?height=400&width=600",
-      "/placeholder.svg?height=400&width=600",
-    ],
-    videoUrl: "/path-to-video-1.mp4",
-    skills: [
-      { name: "React", color: "default" },
-      { name: "TypeScript", color: "secondary" },
-    ],
-    startDate: "Jan 2023",
-    endDate: "Mar 2023",
+      "School project in a team of 5 students where we developed a webshop for a B2B portal using Next.js and Node.js.",
+    technologies: ["Next.js", "Node.js", "MySQL", "Prisma", "Tailwind CSS"],
+    image: "/projects/B2B_Web_chatbox.png",
   },
   {
-    title: "Project 2",
+    name: "Delaware B2B portal (Desktop)",
+    year: 2024,
     description:
-      "Project 2 is an innovative solution that leverages cutting-edge web technologies for optimal performance.",
-    images: [
-      "/placeholder.svg?height=400&width=600",
-      "/placeholder.svg?height=400&width=600",
-    ],
-    videoUrl: "/path-to-video-2.mp4",
-    skills: [
-      { name: "Next.js", color: "default" },
-      { name: "TailwindCSS", color: "secondary" },
-    ],
-    startDate: "Apr 2023",
-    endDate: "Jun 2023",
+      "SChool project in a team of 5 students where we developed a desktop application for a B2B portal using Java and JavaFX.",
+    technologies: ["Java", "JavaFX", "Teamwork"],
+    image: "/projects/B2B_Java_customersDetails.png",
   },
-  // Add more projects as needed
+  {
+    name: "Frituur Webshop",
+    year: 2023,
+    description:
+      "School project where I developed a webshop for a local business. Full stack application with Nest.js REST API and Next.js frontend.",
+    technologies: ["Next.js", "TypeScript", "Prisma", "MySQL", "Tailwind CSS"],
+    image: "/projects/home.png",
+  },
 ];
 
-export default function ProjectsPage() {
+const ProjectCard: React.FC<{ project: Project }> = ({ project }) => (
+  <motion.div
+    whileHover={{ scale: 1.05 }}
+    transition={{ type: "spring", stiffness: 300 }}
+  >
+    <Card className="h-full flex flex-col">
+      <CardHeader>
+        <CardTitle className="flex justify-between items-center">
+          {project.name}
+          <span className="text-sm font-normal text-muted-foreground">
+            {project.year}
+          </span>
+        </CardTitle>
+        <CardDescription>{project.description}</CardDescription>
+      </CardHeader>
+      <CardContent className="flex-grow">
+        {project.image && (
+          <Image
+            src={project.image}
+            height={200}
+            width={300}
+            loading="eager"
+            alt={`${project.name} preview`}
+            className="w-full h-40 object-cover rounded-md mb-4"
+          />
+        )}
+        <div className="flex flex-wrap gap-2">
+          {project.technologies.map((tech) => (
+            <Badge key={tech} variant="secondary">
+              {tech}
+            </Badge>
+          ))}
+        </div>
+      </CardContent>
+    </Card>
+  </motion.div>
+);
+
+export default function ProjectShowcase() {
   return (
-    <div className="min-h-screen bg-background">
-      <main className="py-12">
-        <h1 className="text-4xl font-bold text-center mb-8">My Projects</h1>
-        <ProjectsGrid projects={projectsData} />
-      </main>
+    <div className="container mx-auto py-12 min-h-full">
+      <h2 className="text-3xl font-bold mb-8 text-center">My Projects</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((project) => (
+          <ProjectCard key={project.name} project={project} />
+        ))}
+      </div>
+      <div className="flex items-center justify-center pt-8">
+        <Link
+          href={"/projects"}
+          className={buttonVariants({ variant: "outline" })}
+        >
+          <p className="font-bold text-xl">Learn more</p>
+        </Link>
+      </div>
     </div>
   );
 }

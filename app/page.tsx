@@ -2,7 +2,6 @@
 import About from "./components/About";
 import SkillsShowcase from "./components/SkillsDiv";
 import Projects from "./components/Projects";
-import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -15,9 +14,6 @@ export default function Home() {
       </div>
       <div id="projects" className="flex items-center justify-center w-screen ">
         <Projects />
-      </div>
-      <div className="flex items-center justify-center w-screen ">
-        <Footer />
       </div>
     </div>
   );
