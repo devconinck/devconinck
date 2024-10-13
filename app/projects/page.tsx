@@ -14,6 +14,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 interface Skill {
   name: string;
@@ -192,9 +193,14 @@ export default function ProjectsPage() {
               <div className="md:flex">
                 <div className="md:w-1/2">
                   <Carousel
-                    className="w-full max-w-md mx-auto "
+                    className="w-full max-w-md mx-auto h-full my-auto "
+                    plugins={[
+                      Autoplay({
+                        delay: 2000,
+                      }),
+                    ]}
                     opts={{
-                      align: "start",
+                      align: "center",
                       loop: true,
                     }}
                   >

@@ -139,7 +139,7 @@ const Logo = () => (
       </span>
 
       {/* "dev" with color change and slight up movement on hover */}
-      <span className="text-primary transition-all duration-300 group-hover:text-blue-600 group-hover:-translate-y-0.5">
+      <span className="text-primary transition-all duration-300 group-hover:text-cyan-600 group-hover:-translate-y-0.5">
         dev
       </span>
 
@@ -151,17 +151,6 @@ const Logo = () => (
       {/* Closing bracket with rotation effect */}
       <span className="text-gray-200 dark:text-gray-600 transform transition-transform duration-300 group-hover:rotate-12">
         /&gt;
-      </span>
-
-      {/* Blinking cursor */}
-      <span className="w-2 h-5 bg-primary dark:bg-primary-light ml-1 animate-blink"></span>
-
-      {/* Underline effect */}
-      <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary dark:bg-primary-light transform scale-x-0 transition-transform duration-300 origin-left group-hover:scale-x-100"></span>
-
-      {/* Tooltip effect */}
-      <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-800 text-xs py-1 px-2 rounded opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-        Welcome!
       </span>
     </Link>
   </div>
